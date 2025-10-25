@@ -53,9 +53,9 @@ const NavBar = () => {
         </NavLink>
       </ul>
 
-      {/* Create Account Button */}
+      
       <ul>
-        <NavLink to="/register">
+        <NavLink to="/login">
           <button className="rounded-3xl px-5 py-3 bg-sky-500 text-white hover:bg-sky-600 transition">
             Create Account
           </button>

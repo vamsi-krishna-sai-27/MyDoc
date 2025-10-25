@@ -16,3 +16,7 @@ a.active hr{
       color: white;
     }
 }
+
+::-webkit-scrollbar{
+  @apply hidden
+}
