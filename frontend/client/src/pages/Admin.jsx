@@ -1,7 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
   const [isAdminLogin, setIsAdminLogin] = useState(false);
+  const navigate = useNavigate();
+
+  // When user clicks Login, redirect based on selected type
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isAdminLogin) {
+      navigate("/adminpanel");
+    } else {
+      navigate("/doctorpanel");
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
@@ -18,32 +30,24 @@ const Admin = () => {
           </p>
         </div>
 
-        {/* Form */}
-        <form className="space-y-4">
+        {/* Form (inputs are just for UI) */}
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-gray-700 mb-1" htmlFor="email">
-              Email
-            </label>
+            <label className="block text-gray-700 mb-1">Email</label>
             <input
               type="email"
-              id="email"
-              required
-              defaultValue={isAdminLogin ? "" : ""}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 placeholder-gray-400"
-              placeholder={isAdminLogin ? "admin@example.com" : "email@example.com"}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 placeholder-gray-400"
+              placeholder={
+                isAdminLogin ? "admin@example.com" : "email@example.com"
+              }
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 mb-1" htmlFor="password">
-              Password
-            </label>
+            <label className="block text-gray-700 mb-1">Password</label>
             <input
               type="password"
-              id="password"
-              required
-              defaultValue={isAdminLogin ? "" : ""}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 placeholder-gray-400"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 placeholder-gray-400"
               placeholder="•••••••••••••"
             />
           </div>
@@ -53,12 +57,12 @@ const Admin = () => {
               type="submit"
               className="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg transition-colors duration-200"
             >
-              {isAdminLogin ? "Login" : "Login"}
+              Login
             </button>
           </div>
         </form>
 
-        {/* Switch Link */}
+        {/* Switch Login Type */}
         <p className="text-center text-gray-500">
           {isAdminLogin ? (
             <>

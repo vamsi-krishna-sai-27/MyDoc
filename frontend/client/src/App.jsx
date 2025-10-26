@@ -10,12 +10,15 @@ import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import ScrollToTop from './components/ScorllToTop';
+import DocDash from './docpanel/DocDash';
+import MyProfile from './pages/MyProfile';
+import MyAppointments from './pages/MyAppointments';
 
 const App = () => {
   const location = useLocation();
 
   // List of routes where you DON'T want NavBar/Footer
-  const hideNavFooter = ["/admin", "/login"];
+  const hideNavFooter = ["/admin", "/login","/doctorpanel","/adminpanel"];
 
   const shouldHide = hideNavFooter.includes(location.pathname);
 
@@ -32,6 +35,9 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/doctorpanel" element={<DocDash/>}/>
+          <Route path="/my-profile" element={<MyProfile/>}/>
+          <Route path='/my-appointments' element={<MyAppointments/>}/>
         </Routes>
       </div>
       {!shouldHide && <Footer />}
